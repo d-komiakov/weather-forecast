@@ -5,9 +5,10 @@ interface ForecastStore {
 }
 
 interface ForecastView {
-    fun updateForecast(temperature: Int, windSpeed: Int, clouds: Int)
+    fun showForecast(temperature: Int, windSpeed: Int, clouds: Int)
     fun showProgress()
     fun hideProgress()
+    fun error()
 }
 
 interface ForecastPresenter {
@@ -15,4 +16,5 @@ interface ForecastPresenter {
     fun stop()
     fun bindView(view: ForecastView)
     fun releaseView()
+    fun updateForecast()
 }
