@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object ViridianFactory {
-    
+
     private lateinit var jsonClient: OkHttpClient
 
     @Synchronized
