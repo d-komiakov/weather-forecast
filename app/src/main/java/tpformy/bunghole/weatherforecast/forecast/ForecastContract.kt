@@ -5,15 +5,13 @@ interface ForecastStore {
 }
 
 interface ForecastView {
-    fun showForecast(temperature: Int, windSpeed: Int, clouds: Int)
+    fun showForecast(temperature: Int, windSpeed: Int, clouds: Int, isUpToDate: Boolean)
     fun showProgress()
     fun hideProgress()
-    fun error()
+    fun showError()
 }
 
 interface ForecastPresenter {
-    fun start()
-    fun stop()
     fun bindView(view: ForecastView)
     fun releaseView()
     fun updateForecast()
