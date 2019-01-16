@@ -1,4 +1,4 @@
-package tpformy.bunghole.weatherforecast.utils
+package tpformy.bunghole.weatherforecast.utils.net
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -10,7 +10,6 @@ object ViridianFactory {
 
     private lateinit var jsonClient: OkHttpClient
 
-    @Synchronized
     fun createApi(): OpenWeatherApi {
         if (!ViridianFactory::jsonClient.isInitialized) {
             createJsonClient()
@@ -25,7 +24,6 @@ object ViridianFactory {
         return retrofit.create<OpenWeatherApi>(OpenWeatherApi::class.java)
     }
 
-    @Synchronized
     private fun createJsonClient() {
        jsonClient = OkHttpClient.Builder()
             .connectTimeout(15, TimeUnit.SECONDS)

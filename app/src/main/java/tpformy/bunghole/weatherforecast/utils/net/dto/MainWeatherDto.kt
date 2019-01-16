@@ -1,4 +1,4 @@
-package tpformy.bunghole.weatherforecast.utils.dto
+package tpformy.bunghole.weatherforecast.utils.net.dto
 
 import com.google.gson.annotations.SerializedName
 
