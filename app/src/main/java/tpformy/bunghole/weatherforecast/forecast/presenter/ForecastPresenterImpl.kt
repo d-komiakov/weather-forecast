@@ -3,7 +3,7 @@ package tpformy.bunghole.weatherforecast.forecast.presenter
 import tpformy.bunghole.weatherforecast.forecast.ForecastPresenter
 import tpformy.bunghole.weatherforecast.forecast.ForecastStore
 import tpformy.bunghole.weatherforecast.forecast.ForecastView
-import tpformy.bunghole.weatherforecast.utils.background.TaskManager
+import tpformy.bunghole.weatherforecast.utils.task.TaskManager
 
 class ForecastPresenterImpl(private val forecastStore: ForecastStore, private val taskManager: TaskManager): ForecastPresenter {
 
