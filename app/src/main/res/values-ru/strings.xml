@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Прогноз погоды</string>
+    <string name="temperature">Температура: %d°C</string>
+    <string name="wind_speed">Скорость ветра: %dm/s</string>
+    <string name="clouds">Облачность: %d%</string>
+    <string name="button_refresh">Обновить</string>
+</resources>
