@@ -44,6 +44,6 @@ class ForecastStoreImpl(private val api: OpenWeatherApi, private val persistence
     }
 
     private fun temperatureInCelsiumDegrees(temp: Float) =
-        (temp - 282).toInt()
+        (temp - 273).toInt()
 
 }
