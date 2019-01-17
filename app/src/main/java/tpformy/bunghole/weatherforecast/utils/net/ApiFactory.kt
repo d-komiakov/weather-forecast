@@ -6,12 +6,12 @@ import java.util.concurrent.TimeUnit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-object ViridianFactory {
+object ApiFactory {
 
     private lateinit var jsonClient: OkHttpClient
 
     fun createApi(): OpenWeatherApi {
-        if (!ViridianFactory::jsonClient.isInitialized) {
+        if (!ApiFactory::jsonClient.isInitialized) {
             createJsonClient()
         }
 
