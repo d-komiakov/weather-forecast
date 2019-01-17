@@ -7,5 +7,5 @@ import tpformy.bunghole.weatherforecast.utils.net.dto.ForecastDto
 
 interface OpenWeatherApi {
     @GET("data/2.5/weather?id={id}&appid={appId}")
-    fun userList(@Path("id") id: Int, @Path("appId") appId: String): Call<ForecastDto>
+    fun getForecast(@Path("id") id: Int, @Path("appId") appId: String): Call<ForecastDto>
 }
