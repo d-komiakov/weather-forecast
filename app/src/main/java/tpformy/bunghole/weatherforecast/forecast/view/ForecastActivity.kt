@@ -3,6 +3,8 @@ package tpformy.bunghole.weatherforecast.forecast.view
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import kotlinx.android.synthetic.main.activity_forecast.*
 import tpformy.bunghole.weatherforecast.R
 import tpformy.bunghole.weatherforecast.forecast.ForecastPresenter
 import tpformy.bunghole.weatherforecast.forecast.ForecastView
@@ -37,11 +39,11 @@ class ForecastActivity : AppCompatActivity(), ForecastView {
     }
 
     override fun showProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progress.visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progress.visibility = View.GONE
     }
 
     override fun showError() {
