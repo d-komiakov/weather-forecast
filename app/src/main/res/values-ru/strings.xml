@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Прогноз погоды</string>
     <string name="temperature">Температура: %d°C</string>
-    <string name="wind_speed">Скорость ветра: %dm/s</string>
-    <string name="clouds">Облачность: %d%</string>
+    <string name="wind_speed">Скорость ветра: %d м/c</string>
+    <string name="clouds">Облачность: %d\%</string>
     <string name="button_refresh">Обновить</string>
+    <string name="message_can_not_update_data">Не удалось обновить данные</string>
+    <string name="message_error">Произошла ошибка</string>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_forecast.*
 import tpformy.bunghole.weatherforecast.R
 import tpformy.bunghole.weatherforecast.forecast.ForecastPresenter
@@ -22,6 +23,7 @@ class ForecastActivity : AppCompatActivity(), ForecastView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forecast)
         configure()
+        buttonUpdate.setOnClickListener { presenter.updateForecast() }
     }
 
     override fun onResume() {
@@ -35,7 +37,12 @@ class ForecastActivity : AppCompatActivity(), ForecastView {
     }
 
     override fun showForecast(temperature: Int, windSpeed: Int, clouds: Int, isUpToDate: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        textTemperature.text = getString(R.string.temperature, temperature)
+        textWindSpeed.text = getString(R.string.wind_speed, windSpeed)
+        textClouds.text = getString(R.string.clouds, clouds)
+        if (!isUpToDate) {
+            Toast.makeText(this, R.string.message_can_not_update_data, Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun showProgress() {
@@ -47,7 +54,7 @@ class ForecastActivity : AppCompatActivity(), ForecastView {
     }
 
     override fun showError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(this, R.string.message_error, Toast.LENGTH_LONG).show()
     }
 
     private fun configure() {
