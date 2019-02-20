@@ -2,7 +2,7 @@
     <string name="app_name">Weather Forecast</string>
     <string name="temperature">Temperature: %d°C</string>
     <string name="wind_speed">Wind speed: %d m/s</string>
-    <string name="clouds">Clouds: %d\%</string>
+    <string name="clouds">Clouds: %d%%</string>
     <string name="button_refresh">Refresh</string>
     <string name="message_can_not_update_data">Can not update weather data</string>
     <string name="message_error">An error occurred</string>
