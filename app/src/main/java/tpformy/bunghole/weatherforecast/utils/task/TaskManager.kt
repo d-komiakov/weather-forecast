@@ -1,6 +1,7 @@
 package tpformy.bunghole.weatherforecast.utils.task
 
 import android.os.Handler
+import java.util.concurrent.Executor
 
 interface TaskManager {
     fun <TResult> runTask(backgroundAction: () -> TResult,
@@ -8,18 +9,18 @@ interface TaskManager {
                           errorUiCallback: (Throwable) -> Unit)
 }
 
-class AndroidTaskManager(private val backgroundHandler: Handler, private val mainHandler: Handler) : TaskManager {
+class AndroidTaskManager(private val executor: Executor, private val mainHandler: Handler) : TaskManager {
     override fun <TResult> runTask(backgroundAction: () -> TResult,
                                    uiCallback: (TResult) -> Unit,
                                    errorUiCallback: (Throwable) -> Unit) {
-        backgroundHandler.run {
+        executor.execute {
             try {
                 val result = backgroundAction()
-                mainHandler.run {
+                mainHandler.post {
                     uiCallback(result)
                 }
             } catch (t: Throwable) {
-                mainHandler.run {
+                mainHandler.post {
                     errorUiCallback(t)
                 }
             }
