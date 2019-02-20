@@ -1,5 +1,6 @@
 package tpformy.bunghole.weatherforecast.forecast.presenter
 
+import android.util.Log
 import tpformy.bunghole.weatherforecast.forecast.ForecastPresenter
 import tpformy.bunghole.weatherforecast.forecast.ForecastStore
 import tpformy.bunghole.weatherforecast.forecast.ForecastView
@@ -30,6 +31,7 @@ class ForecastPresenterImpl(private val forecastStore: ForecastStore, private va
             errorUiCallback = {
                 view?.showError()
                 view?.hideProgress()
+                Log.e(ForecastPresenterImpl::class.java.simpleName, "An error occurred", it)
             }
         )
     }
