@@ -1,28 +1,24 @@
 package tpformy.bunghole.weatherforecast.forecast.view
 
-import android.content.Context
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_forecast.*
+import tpformy.bunghole.weatherforecast.ForecastApp
 import tpformy.bunghole.weatherforecast.R
 import tpformy.bunghole.weatherforecast.forecast.ForecastPresenter
 import tpformy.bunghole.weatherforecast.forecast.ForecastView
-import tpformy.bunghole.weatherforecast.forecast.model.ForecastStoreImpl
-import tpformy.bunghole.weatherforecast.forecast.presenter.ForecastPresenterImpl
-import tpformy.bunghole.weatherforecast.utils.net.ApiFactory
-import tpformy.bunghole.weatherforecast.utils.persistence.AndroidPersistence
-import tpformy.bunghole.weatherforecast.utils.task.TaskManagerFactory
+import javax.inject.Inject
 
 class ForecastActivity : AppCompatActivity(), ForecastView {
 
-    private lateinit var presenter: ForecastPresenter
+    @Inject lateinit var presenter: ForecastPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (application as ForecastApp).getComponent().inject(this)
         setContentView(R.layout.activity_forecast)
-        configure()
         buttonUpdate.setOnClickListener { presenter.updateForecast() }
     }
 
@@ -55,13 +51,5 @@ class ForecastActivity : AppCompatActivity(), ForecastView {
 
     override fun showError() {
         Toast.makeText(this, R.string.message_error, Toast.LENGTH_LONG).show()
-    }
-
-    private fun configure() {
-        val api = ApiFactory.createApi()
-        val persistence = AndroidPersistence(getPreferences(Context.MODE_PRIVATE))
-        val store = ForecastStoreImpl(api, persistence)
-        val taskManager = TaskManagerFactory.createTaskManager()
-        presenter = ForecastPresenterImpl(store, taskManager)
     }
 }
